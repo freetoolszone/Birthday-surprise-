@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Butterfly Test</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .butterfly-rig {
+      position: relative;
+      width: 140px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 700px;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.85))
+              drop-shadow(0 0 25px rgba(56, 189, 248, 0.6))
+              drop-shadow(0 0 40px rgba(244, 114, 182, 0.45));
+    }
+    .wing-container {
+      position: absolute;
+      width: 65px;
+      height: 90px;
+      top: 5px;
+    }
+    .wing-left {
+      right: calc(50% + 2px);
+      transform-origin: 100% 50%;
+      animation: flapLeft 0.16s infinite alternate ease-in-out;
+    }
+    .wing-right {
+      left: calc(50% + 2px);
+      transform-origin: 0% 50%;
+      animation: flapRight 0.16s infinite alternate ease-in-out;
+    }
+    @keyframes flapLeft {
+      0% { transform: rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateY(68deg) rotateZ(-6deg); }
+    }
+    @keyframes flapRight {
+      0% { transform: rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateY(-68deg) rotateZ(6deg); }
+    }
+    .butterfly-body {
+      position: absolute;
+      width: 6px;
+      height: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+      animation: bodyBob 0.16s infinite alternate ease-in-out;
+    }
+    @keyframes bodyBob {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-2.5px); }
+    }
+    .head {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd700, #f472b6);
+      box-shadow: 0 0 6px #ffd700;
+    }
+    .thorax {
+      width: 5px;
+      height: 18px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #c084fc, #9333ea);
+      margin-top: 1px;
+    }
+    .abdomen {
+      width: 4px;
+      height: 22px;
+      border-radius: 2px 2px 4px 4px;
+      background: linear-gradient(180deg, #9333ea, #38bdf8);
+      margin-top: 1px;
+    }
+    .antenna {
+      position: absolute;
+      top: -12px;
+      width: 12px;
+      height: 16px;
+      border: 1px solid #ffd700;
+      border-bottom: none;
+      border-radius: 50% 50% 0 0;
+      box-shadow: 0 0 4px #ffd700;
+    }
+    .antenna.left {
+      right: 3px;
+      border-right: none;
+      transform: rotate(-18deg);
+    }
+    .antenna.right {
+      left: 3px;
+      border-left: none;
+      transform: rotate(18deg);
+    }
+    .antenna::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #ffd700;
+      box-shadow: 0 0 6px #ffffff, 0 0 10px #ffd700;
+    }
+    .antenna.left::after { left: -1px; }
+    .antenna.right::after { right: -1px; }
+    svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+  </style>
+</head>
+<body>
+  <div class="butterfly-rig">
+    <div class="wing-container wing-left">
+      <svg viewBox="0 0 70 90">
+        <defs>
+          <linearGradient id="wingGradL" x1="100%" y1="50%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+            <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+            <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+          </linearGradient>
+          <linearGradient id="veinGrad" x1="100%" y1="50%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#fef08a" stop-opacity="0.5" />
+          </linearGradient>
+        </defs>
+        <!-- Left Forewing -->
+        <path d="M 68,44 C 62,20 44,4 16,4 C 4,4 0,16 6,28 C 12,40 28,48 48,48 C 58,48 64,46 68,44 Z"
+              fill="url(#wingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+        <!-- Veins -->
+        <path d="M 68,44 Q 45,26 18,7 M 68,44 Q 38,34 9,25 M 68,44 Q 38,44 14,37"
+              fill="none" stroke="url(#veinGrad)" stroke-width="0.7" opacity="0.8" />
+        <!-- Left Hindwing -->
+        <path d="M 65,46 C 54,50 32,54 20,64 C 10,74 22,86 36,84 C 48,82 58,68 65,52 Z"
+              fill="url(#wingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+        <!-- Hindwing Veins -->
+        <path d="M 65,48 Q 42,64 24,73 M 65,48 Q 50,70 34,80"
+              fill="none" stroke="url(#veinGrad)" stroke-width="0.6" opacity="0.75" />
+        <!-- Stardust accents -->
+        <circle cx="14" cy="14" r="1.5" fill="#ffffff" filter="drop-shadow(0 0 2px #fff)" />
+        <circle cx="24" cy="9" r="1.2" fill="#ffd700" />
+        <circle cx="8" cy="24" r="1.2" fill="#ffffff" />
+        <circle cx="22" cy="72" r="1.4" fill="#ffd700" />
+      </svg>
+    </div>
+
+    <div class="butterfly-body">
+      <div class="antenna left"></div>
+      <div class="antenna right"></div>
+      <div class="head"></div>
+      <div class="thorax"></div>
+      <div class="abdomen"></div>
+    </div>
+
+    <div class="wing-container wing-right">
+      <svg viewBox="0 0 70 90">
+        <defs>
+          <linearGradient id="wingGradR" x1="0%" y1="50%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+            <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+            <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+          </linearGradient>
+        </defs>
+        <!-- Right Forewing -->
+        <path d="M 2,44 C 8,20 26,4 54,4 C 66,4 70,16 64,28 C 58,40 42,48 22,48 C 12,48 6,46 2,44 Z"
+              fill="url(#wingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+        <!-- Veins -->
+        <path d="M 2,44 Q 25,26 52,7 M 2,44 Q 32,34 61,25 M 2,44 Q 32,44 56,37"
+              fill="none" stroke="url(#veinGrad)" stroke-width="0.7" opacity="0.8" />
+        <!-- Right Hindwing -->
+        <path d="M 5,46 C 16,50 38,54 50,64 C 60,74 48,86 34,84 C 22,82 12,68 5,52 Z"
+              fill="url(#wingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+        <!-- Hindwing Veins -->
+        <path d="M 5,48 Q 28,64 46,73 M 5,48 Q 20,70 36,80"
+              fill="none" stroke="url(#veinGrad)" stroke-width="0.6" opacity="0.75" />
+        <!-- Stardust accents -->
+        <circle cx="56" cy="14" r="1.5" fill="#ffffff" filter="drop-shadow(0 0 2px #fff)" />
+        <circle cx="46" cy="9" r="1.2" fill="#ffd700" />
+        <circle cx="62" cy="24" r="1.2" fill="#ffffff" />
+        <circle cx="48" cy="72" r="1.4" fill="#ffd700" />
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
+

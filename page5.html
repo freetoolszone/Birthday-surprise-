@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="single-screen">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline - Your Beautiful Journey ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="single-screen">
+  <!-- Black screen intro fade overlay & Transition Butterfly -->
+  <div class="intro-curtain" id="introCurtain">
+    <canvas class="butterfly-transition-canvas" id="butterflyTransitionCanvas"></canvas>
+    <div class="butterfly-transition-flight" id="butterflyTransitionFlight">
+      <div class="butterfly-3d-model">
+        <div class="butterfly-wing wing-left">
+          <svg viewBox="0 0 70 90">
+            <defs>
+              <linearGradient id="transWingGradL" x1="100%" y1="50%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+              </linearGradient>
+              <linearGradient id="transVeinGrad" x1="100%" y1="50%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#fef08a" stop-opacity="0.6" />
+              </linearGradient>
+            </defs>
+            <path d="M 68,44 C 62,20 44,4 16,4 C 4,4 0,16 6,28 C 12,40 28,48 48,48 C 58,48 64,46 68,44 Z" fill="url(#transWingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 68,44 Q 45,26 18,7 M 68,44 Q 38,34 9,25 M 68,44 Q 38,44 14,37" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.7" opacity="0.8" />
+            <path d="M 65,46 C 54,50 32,54 20,64 C 10,74 22,86 36,84 C 48,82 58,68 65,52 Z" fill="url(#transWingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 65,48 Q 42,64 24,73 M 65,48 Q 50,70 34,80" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.6" opacity="0.75" />
+            <circle cx="14" cy="14" r="1.5" fill="#ffffff" />
+            <circle cx="24" cy="9" r="1.2" fill="#ffd700" />
+            <circle cx="8" cy="24" r="1.2" fill="#ffffff" />
+            <circle cx="22" cy="72" r="1.4" fill="#ffd700" />
+          </svg>
+        </div>
+        <div class="butterfly-body">
+          <div class="butterfly-antenna left"></div>
+          <div class="butterfly-antenna right"></div>
+          <div class="butterfly-head"></div>
+          <div class="butterfly-thorax"></div>
+          <div class="butterfly-abdomen"></div>
+        </div>
+        <div class="butterfly-wing wing-right">
+          <svg viewBox="0 0 70 90">
+            <defs>
+              <linearGradient id="transWingGradR" x1="0%" y1="50%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+              </linearGradient>
+            </defs>
+            <path d="M 2,44 C 8,20 26,4 54,4 C 66,4 70,16 64,28 C 58,40 42,48 22,48 C 12,48 6,46 2,44 Z" fill="url(#transWingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 2,44 Q 25,26 52,7 M 2,44 Q 32,34 61,25 M 2,44 Q 32,44 56,37" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.7" opacity="0.8" />
+            <path d="M 5,46 C 16,50 38,54 50,64 C 60,74 48,86 34,84 C 22,82 12,68 5,52 Z" fill="url(#transWingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 5,48 Q 28,64 46,73 M 5,48 Q 20,70 36,80" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.6" opacity="0.75" />
+            <circle cx="56" cy="14" r="1.5" fill="#ffffff" />
+            <circle cx="46" cy="9" r="1.2" fill="#ffd700" />
+            <circle cx="62" cy="24" r="1.2" fill="#ffffff" />
+            <circle cx="48" cy="72" r="1.4" fill="#ffd700" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Starry Sky Canvas -->
+  <canvas id="starCanvas"></canvas>
+  <div class="nebula-bg"></div>
+
+  <!-- Timeline Main Container (Zero Scroll, Fits 1 Screen) -->
+  <main class="page5-container">
+    <!-- Header -->
+    <header class="timeline-header">
+      <div class="sparkle-badge">
+        <span class="sparkle-icon">✦</span>
+        <span>A Memory Through Time</span>
+        <span class="sparkle-icon">✦</span>
+      </div>
+
+      <h1 class="timeline-title">
+        Your Beautiful Memories ✨
+      </h1>
+
+      <p class="timeline-subtitle">
+        <span class="click-hint-badge">✨ Tap any photo to open ✨</span>
+      </p>
+    </header>
+
+    <!-- Two Hanging Ropes Stage -->
+    <section class="timeline-ropes-stage" aria-label="Photo timeline on hanging ropes">
+
+      <!-- Rope 1: The Early Years & Growing Up (4 Pictures) -->
+      <div class="rope-row">
+        <div class="rope-line"></div>
+
+        <!-- Photo 1: The Beginning -->
+        <div class="polaroid-item" data-index="0" role="button" aria-label="Photo 1: The Beginning">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon">👶</span>
+              <span class="placeholder-tag">Chapter 1</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Mesmerizing🌸</div>
+        </div>
+
+        <!-- Photo 2: Little Dreamer -->
+        <div class="polaroid-item" data-index="1" role="button" aria-label="Photo 2: Little Dreamer">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon"> 🦋</span>
+              <span class="placeholder-tag">Chapter 2</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Radiant 🦋</div>
+        </div>
+
+        <!-- Photo 3: School Days -->
+        <div class="polaroid-item" data-index="2" role="button" aria-label="Photo 3: School Days">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon">🎒</span>
+              <span class="placeholder-tag">Chapter 3</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Graceful🎒</div>
+        </div>
+
+        <!-- Photo 4: Growing Up -->
+        <div class="polaroid-item" data-index="3" role="button" aria-label="Photo 4: Growing Up">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon">🌷</span>
+              <span class="placeholder-tag">Chapter 4</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Enchanting🌷</div>
+        </div>
+      </div>
+
+      <!-- Rope 2: When We Met & Up to Now (4 Pictures) -->
+      <div class="rope-row">
+        <div class="rope-line"></div>
+
+        <!-- Photo 5: When We Met -->
+        <div class="polaroid-item" data-index="4" role="button" aria-label="Photo 5: When We Met">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon">💫</span>
+              <span class="placeholder-tag">Chapter 5</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Angelic💫</div>
+        </div>
+
+        <!-- Photo 6: Golden Memories -->
+        <div class="polaroid-item" data-index="5" role="button" aria-label="Photo 6: Golden Days">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon">🌙</span>
+              <span class="placeholder-tag">Chapter 6</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Captivating🌙</div>
+        </div>
+
+        <!-- Photo 7: Through It All -->
+        <div class="polaroid-item" data-index="6" role="button" aria-label="Photo 7: Through It All">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon">🕊️</span>
+              <span class="placeholder-tag">Chapter 7</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Ethereal💖</div>
+        </div>
+
+        <!-- Photo 8: Today & Always -->
+        <div class="polaroid-item" data-index="7" role="button" aria-label="Photo 8: Today & Always">
+          <div class="clothespin"></div>
+          <div class="polaroid-img-box">
+            <div class="placeholder-photo">
+              <span class="placeholder-icon">💖</span>
+              <span class="placeholder-tag">Chapter 8</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Breathtaking🌟</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Navigation Footer -->
+    <footer class="nav-actions-container">
+      <div class="nav-buttons-row">
+        <a href="page4.html" class="back-btn" id="backBtn">
+          ← Back to Cake
+        </a>
+        <a href="page6.html" class="next-btn" id="nextPageBtn">
+          <span class="btn-glow"></span>
+          <span class="btn-text">One Last Letter For You 💌</span>
+          <span class="btn-icon">→</span>
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Interactive Modal Lightbox for Photos (2-Column Layout, 3:4 Uncropped) -->
+  <div class="timeline-modal-backdrop" id="timelineModal" role="dialog" aria-modal="true" aria-labelledby="cdTrackTitle">
+    <div class="timeline-modal-card">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close photo view">✕</button>
+
+      <!-- Left Column: Big 3:4 Picture (Never Cropped) -->
+      <div class="modal-photo-col">
+        <div class="modal-photo-wrapper" id="modalPhotoWrapper">
+          <div class="placeholder-photo">
+            <span class="placeholder-icon">🌸</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Vinyl / CD Music Player Deck (At the place of message) -->
+      <div class="modal-info-col">
+        <div class="modal-cd-player" id="modalCdPlayer">
+          <!-- Track Header -->
+          <div class="cd-track-header">
+            <span class="cd-badge">✨ Memory Melody</span>
+            <h3 class="cd-track-title" id="cdTrackTitle">Mesmerizing🌸</h3>
+          </div>
+
+          <!-- Rotating Vinyl / CD Stage -->
+          <div class="cd-disc-stage">
+            <!-- Vinyl Record / CD Disc -->
+            <div class="vinyl-disc" id="vinylDisc" role="button" tabindex="0" aria-label="Toggle music playback">
+              <div class="vinyl-sheen"></div>
+              <div class="vinyl-groove-ring ring-1"></div>
+              <div class="vinyl-groove-ring ring-2"></div>
+              <div class="vinyl-groove-ring ring-3"></div>
+              <!-- Center Label (Classic CD Hub) -->
+              <div class="vinyl-center-label" id="vinylCenterLabel">
+                <div class="vinyl-center-ring"></div>
+                <!-- Center Spindle Hole -->
+                <div class="vinyl-spindle-hole"></div>
+              </div>
+            </div>
+
+            <!-- Stylized Turntable Tonearm -->
+            <div class="turntable-tonearm" id="turntableTonearm">
+              <div class="tonearm-base"></div>
+              <div class="tonearm-rod"></div>
+              <div class="tonearm-head"></div>
+            </div>
+          </div>
+
+          <!-- Interactive Player Controls & Timeline -->
+          <div class="cd-controls-panel">
+            <!-- Sound Wave Visualizer & Status -->
+            <div class="cd-status-row">
+              <div class="audio-wave-bars" id="audioWaveBars">
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+              </div>
+              <span class="cd-playing-status" id="cdPlayingStatus">Now Playing</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="cd-progress-row">
+              <span class="cd-time" id="cdCurrentTime">0:00</span>
+              <div class="cd-progress-track" id="cdProgressTrack" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="cd-progress-fill" id="cdProgressFill"></div>
+              </div>
+              <span class="cd-time" id="cdDuration">0:30</span>
+            </div>
+
+            <!-- Play / Pause Master Toggle Button -->
+            <div class="cd-action-btns">
+              <button type="button" class="cd-master-play-btn" id="photoAudioToggleBtn" aria-label="Play or pause audio">
+                <span class="cd-play-icon" id="photoAudioPlayIcon">⏸</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Navigation Row -->
+        <div class="modal-nav-row">
+          <button type="button" class="modal-arrow-btn" id="modalPrevBtn">← Previous</button>
+          <span class="modal-counter" id="modalCounter">1 / 8</span>
+          <button type="button" class="modal-arrow-btn" id="modalNextBtn">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/stars.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="scrollable">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Letter For You 💌✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="scrollable">
+  <!-- Black screen intro fade overlay & Transition Butterfly -->
+  <div class="intro-curtain" id="introCurtain">
+    <canvas class="butterfly-transition-canvas" id="butterflyTransitionCanvas"></canvas>
+    <div class="butterfly-transition-flight" id="butterflyTransitionFlight">
+      <div class="butterfly-3d-model">
+        <div class="butterfly-wing wing-left">
+          <svg viewBox="0 0 70 90">
+            <defs>
+              <linearGradient id="transWingGradL" x1="100%" y1="50%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+              </linearGradient>
+              <linearGradient id="transVeinGrad" x1="100%" y1="50%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#fef08a" stop-opacity="0.6" />
+              </linearGradient>
+            </defs>
+            <path d="M 68,44 C 62,20 44,4 16,4 C 4,4 0,16 6,28 C 12,40 28,48 48,48 C 58,48 64,46 68,44 Z" fill="url(#transWingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 68,44 Q 45,26 18,7 M 68,44 Q 38,34 9,25 M 68,44 Q 38,44 14,37" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.7" opacity="0.8" />
+            <path d="M 65,46 C 54,50 32,54 20,64 C 10,74 22,86 36,84 C 48,82 58,68 65,52 Z" fill="url(#transWingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 65,48 Q 42,64 24,73 M 65,48 Q 50,70 34,80" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.6" opacity="0.75" />
+            <circle cx="14" cy="14" r="1.5" fill="#ffffff" />
+            <circle cx="24" cy="9" r="1.2" fill="#ffd700" />
+            <circle cx="8" cy="24" r="1.2" fill="#ffffff" />
+            <circle cx="22" cy="72" r="1.4" fill="#ffd700" />
+          </svg>
+        </div>
+        <div class="butterfly-body">
+          <div class="butterfly-antenna left"></div>
+          <div class="butterfly-antenna right"></div>
+          <div class="butterfly-head"></div>
+          <div class="butterfly-thorax"></div>
+          <div class="butterfly-abdomen"></div>
+        </div>
+        <div class="butterfly-wing wing-right">
+          <svg viewBox="0 0 70 90">
+            <defs>
+              <linearGradient id="transWingGradR" x1="0%" y1="50%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+              </linearGradient>
+            </defs>
+            <path d="M 2,44 C 8,20 26,4 54,4 C 66,4 70,16 64,28 C 58,40 42,48 22,48 C 12,48 6,46 2,44 Z" fill="url(#transWingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 2,44 Q 25,26 52,7 M 2,44 Q 32,34 61,25 M 2,44 Q 32,44 56,37" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.7" opacity="0.8" />
+            <path d="M 5,46 C 16,50 38,54 50,64 C 60,74 48,86 34,84 C 22,82 12,68 5,52 Z" fill="url(#transWingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 5,48 Q 28,64 46,73 M 5,48 Q 20,70 36,80" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.6" opacity="0.75" />
+            <circle cx="56" cy="14" r="1.5" fill="#ffffff" />
+            <circle cx="46" cy="9" r="1.2" fill="#ffd700" />
+            <circle cx="62" cy="24" r="1.2" fill="#ffffff" />
+            <circle cx="48" cy="72" r="1.4" fill="#ffd700" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Starry Sky Canvas -->
+  <canvas id="starCanvas"></canvas>
+  <div class="nebula-bg"></div>
+
+  <!-- Main Container -->
+  <main class="page-letter-container">
+    <!-- Header -->
+    <header class="letter-page-header">
+      <div class="sparkle-badge">
+        <span class="sparkle-icon">✦</span>
+        <span>The Final Chapter</span>
+        <span class="sparkle-icon">✦</span>
+      </div>
+
+      <h1 class="letter-page-title">
+        A Letter For You 💌✨
+      </h1>
+
+      <p class="letter-page-subtitle">
+        Isse pehle ki yah chhoti si duniya khatm ho jaye, kuch baatein hain jinhen main chahta hun ki tum hamesha yaad
+        rakho.
+      </p>
+    </header>
+
+    <!-- Closed Wax-Sealed Envelope View -->
+    <div class="envelope-wrapper" id="envelopeWrapper" role="button" tabindex="0" aria-label="Open Birthday Letter">
+      <div class="envelope-top-flap"></div>
+      <div class="wax-seal">💖</div>
+      <div class="seal-prompt">
+        <span>✨ Tap the seal to open your letter ✨</span>
+      </div>
+    </div>
+
+    <!-- Unfolded Parchment Letter View -->
+    <section class="letter-parchment-container" id="letterParchment" aria-label="Birthday Letter">
+      <div class="parchment-card">
+        <!-- Salutation -->
+        <h2 class="letter-salutation">My Forever Favorite Person,</h2>
+
+        <!-- Letter Content -->
+        <div class="letter-content">
+          <p class="letter-p">
+            Happy Birthday Hanshu 💖,
+          </p>
+
+          <p class="letter-p">
+            Tum just ek common person nhi ho, tum bahut hi special one ho jiska mere andar ek different place hai baki
+            chijon se bilkul alag.
+            main tumko thankyou bolna chahunga vo sabhi memories ke liye jo ab tk humne banayi hai.
+          </p>
+
+          <p class="letter-p">
+            Tumahare sath jitne bhi moment huye hai bahut hi precious hai mere liye. tumne bina kuch kahe bahut sare
+            changes layi ho mere life me.
+          </p>
+
+          <p class="letter-p">
+            Humesha khus raho aur tumahari life me jo bhi tumne dream dekhe hai vo sabhi pure ho. Aur humesha isi tarah
+            amazing raho jaisi tum ho.
+          </p>
+        </div>
+
+        <!-- Signature Block -->
+        <div class="letter-signature-block">
+          <span class="letter-sign-off">With all my heart, always and forever,</span>
+        </div>
+
+        <!-- Postscript Note -->
+        <div class="letter-ps">
+          <strong>P.S.</strong> Keep smiling, keep shining, and never stop being the wonderful person you are. 🎂🌟
+        </div>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="letter-actions-container">
+        <!-- Top Row: Back & Seal Again -->
+        <div class="letter-secondary-actions">
+          <a href="page5.html" class="back-btn" id="backBtn">
+            ← Back to Timeline
+          </a>
+          <button type="button" class="seal-back-btn" id="sealLetterBackBtn">
+            <span>↺</span> Seal Letter Back
+          </button>
+        </div>
+
+        <!-- Bottom Row: Restart Journey Aligned Down Below -->
+        <div class="letter-restart-wrapper">
+          <a href="index.html" class="restart-universe-btn" id="restartUniverseBtn">
+            <span class="btn-icon">🌟</span>
+            <span class="btn-text">Restart Journey ✨</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Initial Bottom Controls (When envelope is still sealed) -->
+    <footer class="nav-actions-container" id="sealedNavFooter" style="margin-top: 1.5rem;">
+      <div class="nav-buttons-row">
+        <a href="page5.html" class="back-btn">
+          ← Back to Timeline
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/stars.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/letter.js"></script>
+</body>
+
+</html>

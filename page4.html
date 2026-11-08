@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="scrollable">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make a Wish! 🎂✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="scrollable">
+  <!-- Black screen intro fade overlay & Transition Butterfly -->
+  <div class="intro-curtain" id="introCurtain">
+    <canvas class="butterfly-transition-canvas" id="butterflyTransitionCanvas"></canvas>
+    <div class="butterfly-transition-flight" id="butterflyTransitionFlight">
+      <div class="butterfly-3d-model">
+        <div class="butterfly-wing wing-left">
+          <svg viewBox="0 0 70 90">
+            <defs>
+              <linearGradient id="transWingGradL" x1="100%" y1="50%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+              </linearGradient>
+              <linearGradient id="transVeinGrad" x1="100%" y1="50%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#fef08a" stop-opacity="0.6" />
+              </linearGradient>
+            </defs>
+            <path d="M 68,44 C 62,20 44,4 16,4 C 4,4 0,16 6,28 C 12,40 28,48 48,48 C 58,48 64,46 68,44 Z" fill="url(#transWingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 68,44 Q 45,26 18,7 M 68,44 Q 38,34 9,25 M 68,44 Q 38,44 14,37" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.7" opacity="0.8" />
+            <path d="M 65,46 C 54,50 32,54 20,64 C 10,74 22,86 36,84 C 48,82 58,68 65,52 Z" fill="url(#transWingGradL)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 65,48 Q 42,64 24,73 M 65,48 Q 50,70 34,80" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.6" opacity="0.75" />
+            <circle cx="14" cy="14" r="1.5" fill="#ffffff" />
+            <circle cx="24" cy="9" r="1.2" fill="#ffd700" />
+            <circle cx="8" cy="24" r="1.2" fill="#ffffff" />
+            <circle cx="22" cy="72" r="1.4" fill="#ffd700" />
+          </svg>
+        </div>
+        <div class="butterfly-body">
+          <div class="butterfly-antenna left"></div>
+          <div class="butterfly-antenna right"></div>
+          <div class="butterfly-head"></div>
+          <div class="butterfly-thorax"></div>
+          <div class="butterfly-abdomen"></div>
+        </div>
+        <div class="butterfly-wing wing-right">
+          <svg viewBox="0 0 70 90">
+            <defs>
+              <linearGradient id="transWingGradR" x1="0%" y1="50%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                <stop offset="35%" stop-color="#c084fc" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#f472b6" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95" />
+              </linearGradient>
+            </defs>
+            <path d="M 2,44 C 8,20 26,4 54,4 C 66,4 70,16 64,28 C 58,40 42,48 22,48 C 12,48 6,46 2,44 Z" fill="url(#transWingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 2,44 Q 25,26 52,7 M 2,44 Q 32,34 61,25 M 2,44 Q 32,44 56,37" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.7" opacity="0.8" />
+            <path d="M 5,46 C 16,50 38,54 50,64 C 60,74 48,86 34,84 C 22,82 12,68 5,52 Z" fill="url(#transWingGradR)" stroke="rgba(255, 255, 255, 0.85)" stroke-width="0.9" />
+            <path d="M 5,48 Q 28,64 46,73 M 5,48 Q 20,70 36,80" fill="none" stroke="url(#transVeinGrad)" stroke-width="0.6" opacity="0.75" />
+            <circle cx="56" cy="14" r="1.5" fill="#ffffff" />
+            <circle cx="46" cy="9" r="1.2" fill="#ffd700" />
+            <circle cx="62" cy="24" r="1.2" fill="#ffffff" />
+            <circle cx="48" cy="72" r="1.4" fill="#ffd700" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas Overlay -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Starry Sky Canvas -->
+  <canvas id="starCanvas"></canvas>
+  <div class="nebula-bg"></div>
+
+  <!-- Page 4 Main Stage -->
+  <main class="page4-container">
+    <div class="cake-stage">
+      <!-- Top Badge -->
+      <div class="sparkle-badge">
+        <span class="sparkle-icon">✦</span>
+        <span>Birthday Moment</span>
+        <span class="sparkle-icon">✦</span>
+      </div>
+
+      <!-- Header & Wish Prompts -->
+      <header class="cake-header">
+        <h1 class="cake-title" id="cakeTitle">
+          Make a Birthday Wish 🎂
+        </h1>
+        <p class="cake-subtitle" id="cakeSubtitle">
+          Close your eyes, make a wish, and blow them out ✨
+        </p>
+      </header>
+
+      <!-- The Interactive Cake -->
+      <div class="cake-wrapper" id="cakeWrapper" title="Tap candles to blow them out!">
+        <!-- 3 Candles Row -->
+        <div class="candles-row">
+          <!-- Candle 1 -->
+          <div class="candle" id="candle1" role="button" aria-label="Candle 1">
+            <div class="smoke-wisp"></div>
+            <div class="candle-flame"></div>
+            <div class="candle-wick"></div>
+            <div class="candle-stick"></div>
+          </div>
+
+          <!-- Candle 2 (Center) -->
+          <div class="candle" id="candle2" role="button" aria-label="Candle 2">
+            <div class="smoke-wisp"></div>
+            <div class="candle-flame"></div>
+            <div class="candle-wick"></div>
+            <div class="candle-stick"></div>
+          </div>
+
+          <!-- Candle 3 -->
+          <div class="candle" id="candle3" role="button" aria-label="Candle 3">
+            <div class="smoke-wisp"></div>
+            <div class="candle-flame"></div>
+            <div class="candle-wick"></div>
+            <div class="candle-stick"></div>
+          </div>
+        </div>
+
+        <!-- Top Tier -->
+        <div class="cake-top-tier">
+          <div class="frosting-drips"></div>
+          <div class="cake-pearls">
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+          </div>
+        </div>
+
+        <!-- Bottom Tier -->
+        <div class="cake-bottom-tier">
+          <div class="frosting-drips-bottom"></div>
+          <div class="cake-pearls">
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+            <span class="cake-pearl"></span>
+          </div>
+        </div>
+
+        <!-- Cake Plate -->
+        <div class="cake-plate"></div>
+      </div>
+
+      <!-- Blow / Relight Actions -->
+      <div class="cake-actions">
+        <button type="button" class="blow-btn" id="blowCandlesBtn">
+          <span>Blow Out Candles 💨</span>
+        </button>
+
+        <button type="button" class="relight-btn" id="relightCandlesBtn">
+          <span>🕯️</span> Relight & Wish Again
+        </button>
+      </div>
+
+      <!-- Navigation to Next Page (Letter) -->
+      <div class="page4-next-wrapper" id="page4NextWrapper">
+        <div class="nav-buttons-row">
+          <a href="page2.html" class="back-btn" id="backBtn">
+            ← Back to Reasons
+          </a>
+          <a href="page5.html" class="next-btn" id="nextPageBtn">
+            <span class="btn-glow"></span>
+            <span class="btn-text">Step into Memories 📸✨</span>
+            <span class="btn-icon">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/stars.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/cake.js"></script>
+</body>
+
+</html>
